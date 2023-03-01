@@ -13,6 +13,11 @@ function App() {
     setTodoList([...todoList, newTask]);
   };
 
+  const deleteTask = (taskName) => {
+    const newTodoList = todoList.filter((task) => task !== taskName);
+    setTodoList(newTodoList);
+  }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -22,7 +27,15 @@ function App() {
         </div>
         <div className='list'>
           {todoList.map((task) => {
-            return <h3>{task}</h3>
+            return (
+              <div>
+                <h3>{task}</h3>
+                <button onClick={() => deleteTask(task)}>Delete</button>
+              </div>
+
+            )
+
+
           })}
         </div>
       </header>
